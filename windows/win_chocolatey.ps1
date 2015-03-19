@@ -112,10 +112,12 @@ Else
 If ($params.source)
 {
     $source = $params.source.ToString().ToLower()
-    If (($source -ne "chocolatey") -and ($source -ne "webpi") -and ($source -ne "windowsfeatures") -and ($source -ne "ruby"))
-    {
-        Fail-Json $result "source is $source - must be one of chocolatey, ruby, webpi or windowsfeatures."
-    }
+    # dcg: allow an install from other sources,
+    # in my case the wsus server running mongoose http server
+    #If (($source -ne "chocolatey") -and ($source -ne "webpi") -and ($source -ne "windowsfeatures") -and ($source -ne "ruby"))
+    #{
+    #    Fail-Json $result "source is $source - must be one of chocolatey, ruby, webpi or windowsfeatures."
+    #}
 }
 Elseif (!$params.source)
 {
